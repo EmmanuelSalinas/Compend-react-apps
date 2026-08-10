@@ -1,24 +1,22 @@
-# Logs
-logs
-*.log
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-pnpm-debug.log*
-lerna-debug.log*
+# Archivos de dependencias y builds en cualquier subcarpeta
+**/node_modules/
+**/dist/
+**/dist-ssr/
+**/.vite/
 
-node_modules
-dist
-dist-ssr
-*.local
+# Archivos temporales y logs
+**/logs/
+**/*.log
+**/npm-debug.log*
+**/yarn-debug.log*
+**/pnpm-debug.log*
 
-# Editor directories and files
-.vscode/*
-!.vscode/extensions.json
-.idea
+# Archivos de entorno local (variables secretas)
+**/*.local
+**/.env*.local
+
+# Configuración del sistema y editores
 .DS_Store
-*.suo
-*.ntvs*
-*.njsproj
-*.sln
-*.sw?
+**/.DS_Store
+.vscode/
+.idea/

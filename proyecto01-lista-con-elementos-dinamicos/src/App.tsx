@@ -1,6 +1,6 @@
 import Card, { CardBody } from "./components/Card";
 import List from "./components/List";
-import Button from "./components/Button";
+import Button from "./components/Button/Index";
 import { useState } from "react";
 
 function App() {
