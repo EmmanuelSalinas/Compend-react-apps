@@ -1,122 +1,68 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import heroImg from './assets/hero.png'
-import './App.css'
+import Socialnetwork_follow_card from "./Socialnetwork_follow_card";
+type Props = {};
 
-function App() {
-  const [count, setCount] = useState(0)
+type User = {
+  id: number;
+  userName: string;
+  name: string;
+  initialIsFollowing: boolean;
+  imageProfile: string;
+};
 
+function App({}: Props) {
+  const user: User[] = [
+    {
+      id: 1,
+      userName: "manemanito",
+      name: "Emmanuel Salinas Celestino",
+      initialIsFollowing: false,
+      imageProfile:
+        "https://t4.ftcdn.net/jpg/04/31/64/75/360_F_431647519_usrbQ8Z983hTYe8zgA7t1XVc5fEtqcpa.jpg",
+    },
+    {
+      id: 2,
+      userName: "chanchitoFeliz",
+      name: "Aurelio Murillo Tejeda",
+      initialIsFollowing: false,
+      imageProfile:
+        "https://c8.alamy.com/comp/3A3NPJ3/the-brazilian-business-professional-is-smiling-while-talking-on-the-phone-exhibiting-a-persona-of-accessibility-and-friendliness-in-a-corporate-environment-close-up-portrait-3A3NPJ3.jpg",
+    },
+    {
+      id: 3,
+      userName: "AnneHath",
+      name: "Anne Hathaway",
+      initialIsFollowing: true,
+      imageProfile:
+        "https://plus.unsplash.com/premium_photo-1688740375397-34605b6abe48?fm=jpg&q=60&w=3000&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8ZmVtYWxlJTIwcHJvZmlsZXxlbnwwfHwwfHx8MA%3D%3D",
+    },
+  ];
+
+  const formatUserName = (userName: string) => `@${userName}`;
   return (
     <>
-      <section id="center">
-        <div className="hero">
-          <img src={heroImg} className="base" width="170" height="179" alt="" />
-          <img src={reactLogo} className="framework" alt="React logo" />
-          <img src={viteLogo} className="vite" alt="Vite logo" />
-        </div>
-        <div>
-          <h1>Get started</h1>
-          <p>
-            Edit <code>src/App.tsx</code> and save to test <code>HMR</code>
-          </p>
-        </div>
-        <button
-          type="button"
-          className="counter"
-          onClick={() => setCount((count) => count + 1)}
-        >
-          Count is {count}
-        </button>
-      </section>
-
-      <div className="ticks"></div>
-
-      <section id="next-steps">
-        <div id="docs">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#documentation-icon"></use>
-          </svg>
-          <h2>Documentation</h2>
-          <p>Your questions, answered</p>
-          <ul>
-            <li>
-              <a href="https://vite.dev/" target="_blank">
-                <img className="logo" src={viteLogo} alt="" />
-                Explore Vite
-              </a>
-            </li>
-            <li>
-              <a href="https://react.dev/" target="_blank">
-                <img className="button-icon" src={reactLogo} alt="" />
-                Learn more
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div id="social">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#social-icon"></use>
-          </svg>
-          <h2>Connect with us</h2>
-          <p>Join the Vite community</p>
-          <ul>
-            <li>
-              <a href="https://github.com/vitejs/vite" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#github-icon"></use>
-                </svg>
-                GitHub
-              </a>
-            </li>
-            <li>
-              <a href="https://chat.vite.dev/" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#discord-icon"></use>
-                </svg>
-                Discord
-              </a>
-            </li>
-            <li>
-              <a href="https://x.com/vite_js" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#x-icon"></use>
-                </svg>
-                X.com
-              </a>
-            </li>
-            <li>
-              <a href="https://bsky.app/profile/vite.dev" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#bluesky-icon"></use>
-                </svg>
-                Bluesky
-              </a>
-            </li>
-          </ul>
-        </div>
-      </section>
-
-      <div className="ticks"></div>
-      <section id="spacer"></section>
+      <div className="app">
+        {user.map((itemUser: User) => (
+          <Socialnetwork_follow_card
+            key={itemUser.id}
+            formatUserName={formatUserName}
+            {...itemUser}
+          />
+        ))}
+        {/* <Socialnetwork_follow_card
+          formatUserName={formatUserName}
+          {...user[0]}
+        />
+        <Socialnetwork_follow_card
+          formatUserName={formatUserName}
+          {...user[1]}
+        />
+        <Socialnetwork_follow_card
+          formatUserName={formatUserName}
+          {...user[2]}
+        /> */}
+      </div>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
